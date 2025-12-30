@@ -204,6 +204,8 @@ save_total_limit = 3  # Keep only 3 most recent
 
 # Delete old checkpoints
 import os
+import glob
+
 def cleanup_old_checkpoints(directory, keep_last=3):
     checkpoints = sorted(glob.glob(f'{directory}/checkpoint_*.pth'))
     for checkpoint in checkpoints[:-keep_last]:

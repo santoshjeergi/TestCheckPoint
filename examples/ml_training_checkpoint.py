@@ -143,15 +143,30 @@ class TrainingCheckpoint:
         if len(checkpoints) <= keep_last:
             return
         
-        # Sort and keep only recent ones
-        checkpoints.sort()
-        to_delete = checkpoints[:-keep_last]
+        # Extract epoch numbers for proper numerical sorting
+        checkpoint_info = []
+        for filename in checkpoints:
+            try:
+                # Extract epoch number from filename like "checkpoint_epoch_003.json"
+                epoch_str = filename.split('_')[-1].split('.')[0]
+                epoch_num = int(epoch_str)
+                checkpoint_info.append((epoch_num, filename))
+            except (ValueError, IndexError):
+                # Skip files that don't match expected format
+                continue
+        
+        # Sort by epoch number (numerically)
+        checkpoint_info.sort(key=lambda x: x[0])
+        
+        # Keep only the most recent ones
+        to_delete = [filename for _, filename in checkpoint_info[:-keep_last]]
         
         for filename in to_delete:
             filepath = os.path.join(self.checkpoint_dir, filename)
             os.remove(filepath)
         
         print(f"✓ Cleaned up {len(to_delete)} old checkpoints")
+
 
 
 def simulate_training():
