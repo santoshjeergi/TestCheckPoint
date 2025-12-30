@@ -1,0 +1,30 @@
+# Example checkpoint directories (created during demos)
+checkpoints/
+demo_checkpoints/
+recovery_checkpoints/
+saves/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
