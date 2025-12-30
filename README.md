@@ -40,6 +40,8 @@ Save points in games where progress is recorded.
 
 ## Learning Modules
 
+- [Getting Started Guide](docs/getting-started.md) - **Start here!**
+- [Quick Reference](docs/quick-reference.md) - Handy cheat sheet
 - [Module 1: Database Checkpoints](docs/database-checkpoints.md)
 - [Module 2: ML Model Checkpoints](docs/ml-checkpoints.md)
 - [Module 3: Application State Management](docs/app-checkpoints.md)
